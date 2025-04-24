@@ -260,6 +260,10 @@ def train(args):
 
             # method.after_task(cur_iter)
 
+        # memory update is handled after iteration for mir and er
+        if args.mode not in ["naive", "mir", "er"]:
+            method.update_memory(cur_iter)
+
         logger.info("[2-4] Update the information for the current task")
         method.after_task(cur_iter)
 
