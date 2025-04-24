@@ -15,6 +15,7 @@ from methods.joint import Joint
 from methods.regularization import RWalk
 from methods.naive import Naive
 from methods.viewpoint_memory import ViewPointMemory
+from methods.mir import MIR
 
 logger = logging.getLogger()
 
@@ -86,8 +87,17 @@ def select_method(args, criterion, device, train_transform, test_transform, n_cl
             n_classes=n_classes,
             **kwargs,
         )
+    elif args.mode == "mir":
+        method = MIR(
+            criterion=criterion,
+            device=device,
+            train_transform=train_transform,
+            test_transform=test_transform,
+            n_classes=n_classes,
+            **kwargs,
+        )
     else:
-        raise NotImplementedError("Choose the args.mode in [finetune, gdumb]")
+        raise NotImplementedError("Choose the args.mode in [finetune, gdumb, rm, joint, naive, rwalk, viewpoint, mir]")
 
-    logger.info("DIL Scenario: ")
+    logger.info(f"Method: {args.mode}")
     return method
