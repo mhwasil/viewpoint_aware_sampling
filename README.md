@@ -1,4 +1,4 @@
-# Viewpoint-Aware Sampling (VAS)
+# Viewpoint-Aware Sampling (VAS) - Official PyTorch Implementation
 
 This is the official implementation of our paper **"Viewpoint-Aware Sampling for Effective Online Domain Incremental Learning"** at 14th IFAC Symposium on Robotics 2025.
 
@@ -23,12 +23,28 @@ We investigate the problem of online domain continual learning for image classif
 
   Coming soon...
 
-## Run experiments
+## Training
+
+### Train each method
+
+The files [run_openloris_experiments.sh](run_openloris_experiments.sh) and [run_core50_experiments.sh](run_core50_experiments.sh) contain the scripts to run the experiments for each method with different hyperparameters and random seeds.
+
+Example of running VAS with memory size 256
+```
+python train.py --mode=viewpoint --stream_env online --memory_size=256 --uncertainty_measure="" \
+--mem_manage=task_balanced --vas_balanced_view --rnd_seed 42 --dataset=openloris_sequential \
+--exp_name=openloris_sequential --pretrain --cuda_idx=0 --result_dir=results/openloris_sequential_vas
+```
+
+### Reproduce the results in the paper
+
+Running the whole experiments conducted in the paper may take several hours.
+
 * Run experiments on OpenLORIS-Object dataset
   ```
   bash run_openloris_experiments.sh
   ```
-* Run experiments on OpenLORIS-Object dataset
+* Run experiments on CORe-50-NI dataset
   ```
   bash run_core50_experiments.sh
   ```
