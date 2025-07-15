@@ -21,7 +21,9 @@ We investigate the problem of online domain continual learning for image classif
 
 * Download viewpoint annotation files
 
-  Coming soon...
+  Link: [Google Drive](https://drive.google.com/file/d/1YGT7vtbVvkTwueJnwBqZkJJDnP6jFMjL/view?usp=sharing)
+
+  Extract `viewpoint_annotations` to `dataset` directory
 
 ## Training
 
